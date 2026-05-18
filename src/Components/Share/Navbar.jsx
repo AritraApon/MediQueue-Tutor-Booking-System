@@ -9,6 +9,7 @@ import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { authClient } from '@/lib/auth-client';
 import { router } from 'better-auth/api';
+import toast from 'react-hot-toast';
 
 
 const Navbar = () => {
@@ -32,6 +33,7 @@ const Navbar = () => {
                 },
             },
         });
+        toast.success('log out')
     }
 
     const {
@@ -53,10 +55,10 @@ const Navbar = () => {
                 <Link href={'/tutors'}>Tutors</Link>
             </li>
             <li className={`${pathName === '/add-tutor' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600 dark:text-gray-300'} font-semibold hover:text-blue-500 transition-all list-none`}>
-                <Link href={'/add-tutor'}>Add Tutor</Link>
+                <Link href={'/add-tutor'}>Add Tutors</Link>
             </li>
             <li className={`${pathName === '/my-tutor' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600 dark:text-gray-300'} font-semibold hover:text-blue-500 transition-all list-none`}>
-                <Link href={'/my-tutor'}>My Tutor</Link>
+                <Link href={'/my-tutor'}>My Tutors</Link>
             </li>
             <li className={`${pathName === '/my-booking-sessions' ? 'text-blue-600 border-b-2 border-blue-600' : 'text-gray-600 dark:text-gray-300'} font-semibold hover:text-blue-500 transition-all list-none`}>
                 <Link href={'/my-booking-sessions'}>My Sessions</Link>
@@ -72,7 +74,7 @@ const Navbar = () => {
                 <div className="flex items-center gap-2">
 
                     <Link href="/" className="flex items-center gap-2">
-                        
+
                         <h1 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">
                             MediQueue
                         </h1>
@@ -93,17 +95,17 @@ const Navbar = () => {
                     {
                         user ? <div className='flex items-center gap-2'>
                             <div className='flex items-center gap-2'>
-                                 <div>
+                                <div>
                                     <h1>Welcome! <span className='text-blue-500'>{user?.name}</span></h1>
                                 </div>
                                 <Link href={'/profile'} className='border-3 shadow border-blue-500 rounded-full shadow-blue-50'>
                                     <Image
-                                src={user?.image}
-                                alt='user image'
-                                width={40}
-                                height={40}
-                                className='rounded-full'
-                                />
+                                        src={user?.image}
+                                        alt='user image'
+                                        width={40}
+                                        height={40}
+                                        className='rounded-full'
+                                    />
                                 </Link>
 
 
@@ -211,36 +213,42 @@ const Navbar = () => {
                                                 </div>
 
                                                 {/* Added 'as={Link}' for better Next.js performance */}
-                                                <Link href="/login">
-                                                    <Button
-                                                        color="primary"
-                                                        variant="solid"
-                                                        fullWidth
-                                                        className="font-bold w-full border-2 bg-blue-300"
-                                                    >
-                                                        Login
-                                                    </Button>
-                                                </Link>
+                                                {
+                                                    user ? <div>
+                                                        <Button onClick={handleSingOut}
+                                                            variant="solid"
+                                                            size="sm"
+                                                            className="font-bold  border-2 border-red-500  rounded-full px-5 w-full"
+                                                        >
+                                                            Log out
+                                                        </Button>
+                                                    </div> :
+                                                        <div>
+                                                            <Link href="/login">
+                                                                <Button
+                                                                    color="primary"
+                                                                    variant="solid"
+                                                                    fullWidth
+                                                                    className="font-bold w-full border-2 bg-blue-300"
+                                                                >
+                                                                    Login
+                                                                </Button>
+                                                            </Link>
 
 
-                                                <Link href="/singup" >
-                                                    <Button
-                                                        variant="solid"
-                                                        size="sm"
-                                                        className="font-bold border-2 border-blue-500 rounded-full px-5 w-full"
-                                                    >
-                                                        Sign Up
-                                                    </Button>
-                                                </Link>
+                                                            <Link href="/singup" >
+                                                                <Button
+                                                                    variant="solid"
+                                                                    size="sm"
+                                                                    className="font-bold border-2 border-blue-500 rounded-full px-5 w-full"
+                                                                >
+                                                                    Sign Up
+                                                                </Button>
+                                                            </Link>
+                                                        </div>
+                                                }
 
 
-                                                <Button onClick={handleSingOut}
-                                                    variant="solid"
-                                                    size="sm"
-                                                    className="font-bold  border-2 border-red-500  rounded-full px-5 w-full"
-                                                >
-                                                    Log out
-                                                </Button>
                                             </div>
                                         </nav>
                                     </Drawer.Body>

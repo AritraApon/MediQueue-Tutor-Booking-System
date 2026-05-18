@@ -6,9 +6,60 @@ import { Button, FieldError, Form, Input, Label, TextField, InputGroup } from "@
 import { useState } from "react";
 import { FaGoogle } from "react-icons/fa6";
 import { motion } from 'framer-motion';
+import { authClient } from "@/lib/auth-client";
+import toast from "react-hot-toast";
 
 const LogInFrom = () => {
   const [isVisible, setIsVisible] = useState(false);
+
+  const onSubmit = async (e) => {
+    e.preventDefault()
+    const fromData = new FormData(e.target)
+    const userData = Object.fromEntries(fromData.entries())
+    console.log(userData)
+
+    const { data, error } = await authClient.signIn.email({
+      /**
+       * The user email
+       */
+      email: userData.email,
+      /**
+       * The user password
+       */
+      password: userData.password,
+      /**
+       * A URL to redirect to after the user verifies their email (optional)
+       */
+      callbackURL: "/",
+      /**
+       * remember the user session after the browser is closed.
+       * @default true
+       */
+      rememberMe: false
+    }, {
+      //callbacks
+    })
+
+    if (data) {
+      toast.success('Successfully log in')
+    }
+    if (error) {
+      toast.error(error.message || "Something went wrong on the server");
+    }
+    console.log(data, error)
+
+
+  }
+
+  const googleSingIn = async () => {
+    const data = await authClient.signIn.social({
+      provider: "google",
+    });
+    if (data) {
+      redirect('/'),
+        toast.success('Successfully SingUp')
+    }
+  }
 
   return (
     <div className="min-h-[90vh] flex flex-col justify-center items-center container mx-auto px-4">
@@ -32,7 +83,7 @@ const LogInFrom = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.4, ease: "easeOut" }}
       >
-        <Form className="border-none rounded-[2.5rem] bg-white dark:bg-zinc-900 shadow-2xl p-8 sm:p-10 flex flex-col gap-5" >
+        <Form onSubmit={onSubmit} className="border-none rounded-[2.5rem] bg-white dark:bg-zinc-900 shadow-2xl p-8 sm:p-10 flex flex-col gap-5" >
 
           {/* Email Field */}
           <TextField
@@ -119,7 +170,7 @@ const LogInFrom = () => {
           </div>
 
           {/* Google Login */}
-          <button
+          <button onClick={googleSingIn}
             type="button"
             className="w-full h-12 flex items-center justify-center gap-3 px-4 border border-gray-200 dark:border-zinc-800 rounded-xl bg-transparent hover:bg-gray-50 dark:hover:bg-zinc-800 text-gray-700 dark:text-zinc-200 font-bold transition-all"
           >
@@ -130,8 +181,8 @@ const LogInFrom = () => {
           {/* Register Link */}
           <p className="text-center text-sm text-gray-500 dark:text-zinc-400 mt-2">
             Don’t have an account?{' '}
-            <Link href={'/register'} className="text-violet-600 font-black hover:underline underline-offset-4">
-              Register
+            <Link href={'/singup'} className="text-violet-600 font-black hover:underline underline-offset-4">
+              Sing Up
             </Link>
           </p>
 

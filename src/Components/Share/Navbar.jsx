@@ -79,26 +79,26 @@ const Navbar = () => {
                         </Button>
                     )}
                     {/* loging  */}
+                    <Link href="/login">
+                        <Button
+                            variant="flat"
+                            size="sm"
+                            className="font-bold bg-blue-500 text-white rounded-full px-5"
+                        >
+                            Login
+                        </Button>
+                    </Link>
 
-                    <Button
-                        as={Link}
-                        href="/login"
-                        variant="flat"
-                        size="sm"
-                        className="font-bold bg-blue-500 text-white rounded-full px-5"
-                    >
-                        Login
-                    </Button>
+                    <Link href={'/singup'}>
+                        <Button
+                            variant="solid"
+                            size="sm"
+                            className="font-bold  border-2 border-blue-500  rounded-full px-5"
+                        >
+                            Sign Up
+                        </Button>
+                    </Link>
 
-                    <Button
-                        as={Link}
-                        href="/register"
-                        variant="solid"
-                        size="sm"
-                        className="font-bold  border-2 border-blue-500  rounded-full px-5"
-                    >
-                        Sign Up
-                    </Button>
 
                 </div>
             </div>
@@ -109,76 +109,76 @@ const Navbar = () => {
 
 
                     <div>
-                   <Drawer>
-  {/* Corrected Trigger: Removing the HeroUI Button to avoid nested <button> tags */}
-  <Drawer.Trigger
-    className="p-2 hover:bg-default-100 rounded-lg transition-colors inline-flex items-center justify-center"
-    aria-label="Open Menu"
-    onPress={() => setIsOpen(true)}
-  >
-    <Bars />
-  </Drawer.Trigger>
+                        <Drawer>
+                            {/* Corrected Trigger: Removing the HeroUI Button to avoid nested <button> tags */}
+                            <Drawer.Trigger
+                                className="p-2 hover:bg-default-100 rounded-lg transition-colors inline-flex items-center justify-center"
+                                aria-label="Open Menu"
+                                onPress={() => setIsOpen(true)}
+                            >
+                                <Bars />
+                            </Drawer.Trigger>
 
-  <Drawer.Backdrop />
-  <Drawer.Content placement="left">
-    <Drawer.Dialog className="p-6">
-      <Drawer.CloseTrigger className="absolute right-4 top-4" />
+                            <Drawer.Backdrop />
+                            <Drawer.Content placement="left">
+                                <Drawer.Dialog className="p-6">
+                                    <Drawer.CloseTrigger className="absolute right-4 top-4" />
 
-      <Drawer.Header>
-        <Drawer.Heading className="text-xl font-bold text-primary">
-          Navigation
-        </Drawer.Heading>
-      </Drawer.Header>
+                                    <Drawer.Header>
+                                        <Drawer.Heading className="text-xl font-bold text-primary">
+                                            Navigation
+                                        </Drawer.Heading>
+                                    </Drawer.Header>
 
-      <Drawer.Body className="mt-8">
-        <nav className="flex flex-col gap-6">
-          <ul className="flex flex-col gap-4 list-none p-0">
-            {links}
-          </ul>
+                                    <Drawer.Body className="mt-8">
+                                        <nav className="flex flex-col gap-6">
+                                            <ul className="flex flex-col gap-4 list-none p-0">
+                                                {links}
+                                            </ul>
 
-          <div className="border-t pt-6 flex flex-col gap-4">
-            <div className="flex items-center gap-4">
-              <p className="text-sm font-medium">Appearance:</p>
-              {mounted && (
-                <Button
-                  isIconOnly
-                  variant="flat"
-                  size="sm"
-                  radius="full"
-                  onPress={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                >
-                  {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
-                </Button>
-              )}
-            </div>
+                                            <div className="border-t pt-6 flex flex-col gap-4">
+                                                <div className="flex items-center gap-4">
+                                                    <p className="text-sm font-medium">Appearance:</p>
+                                                    {mounted && (
+                                                        <Button
+                                                            isIconOnly
+                                                            variant="flat"
+                                                            size="sm"
+                                                            radius="full"
+                                                            onPress={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                                                        >
+                                                            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+                                                        </Button>
+                                                    )}
+                                                </div>
 
-            {/* Added 'as={Link}' for better Next.js performance */}
-            <Button
-              as={Link}
-              href="/login"
-              color="primary"
-              variant="solid"
-              fullWidth
-              className="font-bold w-full border-2 bg-blue-300"
-            >
-              Login
-            </Button>
+                                                {/* Added 'as={Link}' for better Next.js performance */}
+                                                <Button
+                                                    as={Link}
+                                                    href="/login"
+                                                    color="primary"
+                                                    variant="solid"
+                                                    fullWidth
+                                                    className="font-bold w-full border-2 bg-blue-300"
+                                                >
+                                                    Login
+                                                </Button>
 
-            <Button
-              as={Link}
-              href="/register"
-              variant="solid"
-              size="sm"
-              className="font-bold border-2 border-blue-500 rounded-full px-5 w-full"
-            >
-              Sign Up
-            </Button>
-          </div>
-        </nav>
-      </Drawer.Body>
-    </Drawer.Dialog>
-  </Drawer.Content>
-</Drawer>
+                                                <Button
+                                                    as={Link}
+                                                    href="/register"
+                                                    variant="solid"
+                                                    size="sm"
+                                                    className="font-bold border-2 border-blue-500 rounded-full px-5 w-full"
+                                                >
+                                                    Sign Up
+                                                </Button>
+                                            </div>
+                                        </nav>
+                                    </Drawer.Body>
+                                </Drawer.Dialog>
+                            </Drawer.Content>
+                        </Drawer>
                     </div>
 
 

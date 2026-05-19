@@ -2,15 +2,36 @@
 import { Envelope } from "@gravity-ui/icons";
 import { Button, Modal } from "@heroui/react";
 import { motion } from "framer-motion";
+import toast from "react-hot-toast";
 
 const EditForm = ({ myTutors }) => {
 
-    const handleUpdate = (e) => {
+    const handleUpdate = async (e, onClose) => { 
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const updatedData = Object.fromEntries(formData);
-        console.log("Updated Data:", updatedData);
-        // এখানে তোর API কল করবি
+
+        try {
+            const res = await fetch(`http://localhost:5000/tutors/${myTutors._id}`, {
+                method: "PATCH",
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(updatedData)
+            });
+
+            const data = await res.json();
+
+            if (data.modifiedCount > 0) {
+                toast.success("Successfully UserInfo Update");
+
+                if (onClose) onClose();
+                window.location.reload();
+            }
+        } catch (error) {
+            console.error("Update failed:", error);
+            toast.error("Something went wrong!");
+        }
     };
 
     return (

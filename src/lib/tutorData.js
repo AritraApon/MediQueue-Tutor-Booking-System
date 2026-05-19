@@ -23,7 +23,7 @@ export const getMyAddTutorsInfo = async (user) => {
 
     try {
         const res = await fetch(`http://localhost:5000/my-tutors?email=${user.email}`, {
-            cache: 'no-store', 
+            cache: 'no-store',
         });
 
         if (!res.ok) {
@@ -38,3 +38,14 @@ export const getMyAddTutorsInfo = async (user) => {
         return [];
     }
 };
+
+
+
+// my session data
+
+ export const getBookingData = async(id)=>{
+    const res = await fetch(`http://localhost:5000/my-bookings/${id}`);
+    const data = await res.json();
+    return data 
+
+ }

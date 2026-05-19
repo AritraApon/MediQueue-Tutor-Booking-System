@@ -53,7 +53,6 @@ const AddTutorFrom = () => {
             form.reset();
         }
     } catch (error) {
-        console.error("Fetch Error:", error);
         toast.error("Failed to add tutor. Check console.");
     }
 };

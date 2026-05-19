@@ -2,10 +2,50 @@
 import { useSession } from "@/lib/auth-client";
 import { Envelope } from "@gravity-ui/icons";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
+import toast from "react-hot-toast";
 
 const BookSessionFrom = ({ tutor }) => {
+
 const { data: session } = useSession();
  const user = session?.user;
+
+const handleBooking = async (e) => {
+    e.preventDefault();
+
+    if (!user) {
+        toast.error("Please login to book a session");
+        return;
+    }
+
+    const bookingInfo = {
+        tutorId: tutor._id,
+        tutorName: tutor?.tutorName,
+        studentName: user?.name || user?.displayName,
+        studentEmail: user?.email,
+        studentId: user?.id,
+        phone: e.target.phone.value,
+        status: "Booked"
+    };
+
+    try {
+        const res = await fetch(`http://localhost:5000/bookings`, {
+            method: "POST",
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify(bookingInfo)
+        });
+        const data = await res.json();
+
+        if (!res.ok) {
+            return toast.error(data.message || "Booking failed!");
+        }
+        if (data.bookingResult?.insertedId) {
+            toast.success("Session Booked Successfully!");
+        }
+    } catch (error) {
+        console.error("Booking Error:", error);
+        toast.error("Something went wrong!");
+    }
+};
 
     return (
         <div>
@@ -25,7 +65,7 @@ const { data: session } = useSession();
                             </Modal.Header>
                             <Modal.Body className="p-6">
                                 <Surface variant="default">
-                                    <form className="flex flex-col gap-4">
+                                    <form onSubmit={handleBooking}  className="flex flex-col gap-4">
                                         {/* Name  */}
                                         <TextField className="w-full" name="name" type="text">
                                             <Label>Student Name</Label>

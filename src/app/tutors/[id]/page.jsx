@@ -2,6 +2,7 @@ import BookSessionFrom from "@/Components/Tutors/BookSessionFrom";
 import { getTutorDetailsInfo } from "@/lib/tutorData";
 import Image from "next/image";
 import Link from "next/link";
+import { BsCalendar2DateFill } from "react-icons/bs";
 
 const TutorDetailsPage = async ({ params }) => {
     const { id } = await params;
@@ -45,9 +46,9 @@ const TutorDetailsPage = async ({ params }) => {
                                     <span className="text-2xl font-black text-blue-600">${tutor.hourlyFee}</span>
                                 </div>
                                 <div className="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-3">
-                                    <span className="text-gray-500 dark:text-gray-400 font-medium">Review</span>
+                                    <span className="text-gray-500 dark:text-gray-400 font-medium">Session Start Date</span>
                                     <span className="flex items-center gap-1 font-bold dark:text-white">
-                                        ⭐ {tutor.review || 0}
+                                     <BsCalendar2DateFill /> {tutor?.sessionDate }
                                     </span>
                                 </div>
                                 <div className="flex justify-between items-center pb-1">

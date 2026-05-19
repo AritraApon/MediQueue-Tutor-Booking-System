@@ -32,6 +32,7 @@ const AddTutorFrom = () => {
     addTutorData.userName = user?.name;
     addTutorData.hourlyFee = parseFloat(addTutorData.hourlyFee);
     addTutorData.totalSlot = parseInt(addTutorData.totalSlot);
+    addTutorData.createdAt = new Date().toISOString();
     addTutorData.review = 0;
 
     // console.log("Sending Data:", addTutorData);

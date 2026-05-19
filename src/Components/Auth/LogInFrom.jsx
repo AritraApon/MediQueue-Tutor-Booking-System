@@ -16,7 +16,7 @@ const LogInFrom = () => {
     e.preventDefault()
     const fromData = new FormData(e.target)
     const userData = Object.fromEntries(fromData.entries())
-    console.log(userData)
+    // console.log(userData)
 
     const { data, error } = await authClient.signIn.email({
       /**

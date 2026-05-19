@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import { authClient } from '@/lib/auth-client';
 import { router } from 'better-auth/api';
 import toast from 'react-hot-toast';
+import { IoLogOutSharp } from 'react-icons/io5';
 
 
 const Navbar = () => {
@@ -113,9 +114,9 @@ const Navbar = () => {
                             <Button onClick={handleSingOut}
                                 variant="solid"
                                 size="sm"
-                                className="font-bold  border-2 bg-red-600  rounded-full px-5 text-white"
+                                className="font-bold  border-2 bg-red-600  rounded-full p-4 text-white text-lg"
                             >
-                                Log out
+                                <IoLogOutSharp />
                             </Button>
 
                         </div>

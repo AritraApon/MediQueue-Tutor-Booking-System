@@ -3,7 +3,7 @@ import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
 
 const client = new MongoClient(process.env.MONGO_URI);
-const db = client.db('medi-queue');
+const db = client.db('mediQueueDB');
 
 export const auth = betterAuth({
     emailAndPassword: {

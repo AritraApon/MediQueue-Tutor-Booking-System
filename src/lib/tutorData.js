@@ -17,7 +17,24 @@ export const getTutorDetailsInfo = async(id)=>{
 
 // email filter data
 
-export const getMyAddTutorsInfo = async(user) =>{
-    const res = await fetch(`http://localhost:5000/my-tutors?email=${user?.email}`);const data = await res.json();
-    return data
-}
+export const getMyAddTutorsInfo = async (user) => {
+
+    if (!user?.email) return [];
+
+    try {
+        const res = await fetch(`http://localhost:5000/my-tutors?email=${user.email}`, {
+            cache: 'no-store', 
+        });
+
+        if (!res.ok) {
+            const errorData = await res.json();
+            console.error("Backend Error:", errorData.message);
+            return [];
+        }
+
+        return await res.json();
+    } catch (error) {
+        console.error("Fetch failed:", error.message);
+        return [];
+    }
+};

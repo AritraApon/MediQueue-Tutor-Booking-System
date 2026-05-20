@@ -1,8 +1,8 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import { Button, Modal } from "@heroui/react";
+import { Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { BiEnvelope } from "react-icons/bi";
 import { toast } from "react-toastify";
 
 const EditForm = ({ myTutors }) => {
@@ -59,7 +59,7 @@ const EditForm = ({ myTutors }) => {
                         <div className="p-8 pb-4">
                             <div className="flex items-center gap-3">
                                 <div className="p-2.5 bg-blue-600 rounded-xl text-white">
-                                    <BiEnvelope size={20} />
+                                    <Mail size={20} />
                                 </div>
                                 <div>
                                     <h2 className="text-xl font-black text-gray-900 dark:text-white">Edit Tutor Info</h2>

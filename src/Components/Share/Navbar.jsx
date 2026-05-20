@@ -8,9 +8,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { authClient } from '@/lib/auth-client';
-import { IoLogOutSharp } from 'react-icons/io5';
-import { Moon, Sun } from 'lucide-react';
-import { AiOutlineBars } from 'react-icons/ai';
+import { ChartBar, LogOut, Moon, Sun } from 'lucide-react';
 import { toast } from 'react-toastify';
 
 
@@ -120,7 +118,7 @@ const Navbar = () => {
                                 size="sm"
                                 className="font-bold  border-2 bg-red-600  rounded-full p-4 text-white text-lg"
                             >
-                                <IoLogOutSharp />
+                                <LogOut/>
                             </Button>
 
                         </div>
@@ -181,7 +179,7 @@ const Navbar = () => {
                                 aria-label="Open Menu"
                                 onPress={() => setIsOpen(true)}
                             >
-                                <AiOutlineBars />
+                                <ChartBar/>
                             </Drawer.Trigger>
 
                             <Drawer.Backdrop />

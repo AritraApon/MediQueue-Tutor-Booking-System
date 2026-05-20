@@ -1,6 +1,7 @@
 import BookSessionFrom from "@/Components/Tutors/BookSessionFrom";
 import { auth } from "@/lib/auth";
 import { getTutorDetailsInfo } from "@/lib/tutorData";
+import { Calendar } from "lucide-react";
 import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
@@ -68,7 +69,7 @@ const TutorDetailsPage = async ({ params }) => {
                                 <div className="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-3">
                                     <span className="text-gray-500 dark:text-gray-400 font-medium">Session Start Date</span>
                                     <span className="flex items-center gap-1 font-bold dark:text-white">
-                                        <BsFillCalendar2DateFill /> {tutor?.sessionDate}
+                                        <Calendar /> {tutor?.sessionDate}
                                     </span>
                                 </div>
                                 <div className="flex justify-between items-center pb-1">

@@ -16,7 +16,8 @@ import { authClient, useSession } from "@/lib/auth-client";
 import Image from "next/image";
 
 import { toast } from "react-toastify";
-import { BiEdit } from "react-icons/bi";
+import { Edit } from "lucide-react";
+
 
 
 
@@ -70,7 +71,7 @@ const EditModal = () => {
                     size="lg"
                     className="w-70"
                 >
-                    <BiEdit size={18} />
+                    <Edit size={18} />
                     Edit Profile
                 </Button>
 

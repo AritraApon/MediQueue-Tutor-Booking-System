@@ -14,7 +14,7 @@ const EditForm = ({ myTutors }) => {
         const {data:tokenData} = await authClient.token()
 
         try {
-            const res = await fetch(`http://localhost:5000/tutors/${myTutors._id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}tutors/${myTutors._id}`, {
                 method: "PATCH",
                 headers: {
                     'content-type': 'application/json',

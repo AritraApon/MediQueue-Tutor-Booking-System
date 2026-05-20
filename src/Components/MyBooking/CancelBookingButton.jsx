@@ -11,7 +11,7 @@ const CancelBookingButton = ({ booking }) => {
         const { data: tokenData } = await authClient.token()
 
         try {
-            const res = await fetch(`http://localhost:5000/bookings/${booking._id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}/bookings/${booking._id}`, {
                 method: "PATCH",
                 headers:{
                     'Authorization': `Bearer ${tokenData?.token}`,

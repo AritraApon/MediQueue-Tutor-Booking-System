@@ -9,7 +9,7 @@ const DeleteButton = ({ tutor }) => {
         const {data:tokenData} = await authClient.token()
 
         try {
-            const res = await fetch(`http://localhost:5000/tutors/${tutor._id}`, {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}/tutors/${tutor._id}`, {
                 method: "DELETE",
                 headers:{
                     'Authorization': `Bearer ${tokenData?.token}`,

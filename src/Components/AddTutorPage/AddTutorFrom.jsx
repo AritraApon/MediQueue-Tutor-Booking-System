@@ -38,7 +38,7 @@ const AddTutorFrom = () => {
     // console.log("Sending Data:", addTutorData);
       const {data:tokenData} = await authClient.token()
     try {
-        const res = await fetch(`http://localhost:5000/tutors`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}/tutors`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

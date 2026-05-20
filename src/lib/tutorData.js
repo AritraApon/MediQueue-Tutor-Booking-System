@@ -3,7 +3,7 @@ import { auth } from "./auth"
 
 //  All tutor data
 export const getAllTutorsInfo = async (search = "") => {
-    const res = await fetch(`http://localhost:5000/tutors?search=${search}`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}/tutors?search=${search}`)
     const data = await res.json()
     return data
 
@@ -11,18 +11,11 @@ export const getAllTutorsInfo = async (search = "") => {
 
 // home page 6 tutors info
 export const getSixTutorsInfo = async () => {
-    const res = await fetch(`http://localhost:5000/six-tutors`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}/six-tutors`);
     const data = await res.json()
     return data
 }
 
-// search tutor
-
-// export const getSearchTutor = async () =>{
-//     const res = await fetch(`http://localhost:5000/tutors?search=${search}`)
-//     const data = await res.json()
-//     return data
-// }
 
 // tutors Details page
 
@@ -34,7 +27,7 @@ export const getTutorDetailsInfo = async (id) => {
        })
 
 
-        const res = await fetch(`http://localhost:5000/tutors/${id}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}/tutors/${id}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token || ''}`,
@@ -66,7 +59,7 @@ export const getMyAddTutorsInfo = async (user) => {
        })
 
     try {
-        const res = await fetch(`http://localhost:5000/my-tutors?email=${user.email}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}/my-tutors?email=${user.email}`, {
 
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -97,7 +90,7 @@ export const getBookingData = async (id) => {
         headers:await headers()
        })
 
-    const res = await fetch(`http://localhost:5000/my-bookings/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}/my-bookings/${id}`, {
         headers: {
             'Authorization': `Bearer ${token}`
         }

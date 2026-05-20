@@ -173,7 +173,7 @@ const LogInFrom = () => {
 
           {/* Google Login */}
           <button
-            onClick={googleSignIn} 
+            onClick={googleSingIn}
             type="button"
             className="w-full h-12 flex items-center justify-center gap-3 px-4 border border-gray-200 dark:border-zinc-800 rounded-xl bg-transparent hover:bg-gray-50 dark:hover:bg-zinc-800 text-gray-700 dark:text-zinc-200 font-bold transition-all"
           >

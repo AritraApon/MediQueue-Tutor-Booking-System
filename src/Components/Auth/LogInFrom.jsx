@@ -1,13 +1,13 @@
 "use client"
-
 import Link from "next/link";
-import { Check, Eye, EyeSlash } from "@gravity-ui/icons";
 import { Button, FieldError, Form, Input, Label, TextField, InputGroup } from "@heroui/react";
 import { useState } from "react";
 import { FaGoogle } from "react-icons/fa6";
 import { motion } from 'framer-motion';
 import { authClient } from "@/lib/auth-client";
 import toast from "react-hot-toast";
+
+import { Eye, EyeSlash } from "@gravity-ui/icons";
 
 const LogInFrom = () => {
   const [isVisible, setIsVisible] = useState(false);

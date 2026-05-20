@@ -1,16 +1,16 @@
 "use client"
 
 import Image from 'next/image';
-import { Bars, Moon, Sun } from "@gravity-ui/icons";
+
 import { Button, Drawer } from "@heroui/react";
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { authClient } from '@/lib/auth-client';
-import { router } from 'better-auth/api';
 import toast from 'react-hot-toast';
 import { IoLogOutSharp } from 'react-icons/io5';
+import { Bars, Moon, Sun } from '@gravity-ui/icons';
 
 
 const Navbar = () => {
@@ -43,7 +43,7 @@ const Navbar = () => {
         data: session,
         isPending,
         error,
-        refetch 
+        refetch
     } = authClient.useSession()
 
     const user = session?.user;

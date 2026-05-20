@@ -2,7 +2,6 @@
 import { authClient } from "@/lib/auth-client";
 import { Envelope } from "@gravity-ui/icons";
 import { Button, Modal } from "@heroui/react";
-import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 
 const EditForm = ({ myTutors }) => {

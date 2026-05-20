@@ -1,6 +1,6 @@
 'use client'
 import Link from "next/link";
-import { Check, Eye, EyeSlash } from "@gravity-ui/icons";
+import {   Eye, EyeSlash } from "@gravity-ui/icons";
 import { Button, FieldError, Form, Input, Label, TextField, InputGroup } from "@heroui/react";
 import { useState } from "react";
 import { FaGoogle } from "react-icons/fa6";

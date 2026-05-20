@@ -1,4 +1,5 @@
 "use client"
+
 import { Envelope, LogoFacebook, LogoGithub, LogoLinkedin } from "@gravity-ui/icons";
 import Link from "next/link";
 import { BiLogoTwitter, BiPhone } from "react-icons/bi";

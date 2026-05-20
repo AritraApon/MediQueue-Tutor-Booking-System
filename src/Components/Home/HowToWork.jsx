@@ -1,6 +1,5 @@
 "use client"
 import { motion } from "framer-motion";
-import { Bell, Gear, Magnifier } from '@gravity-ui/icons';
 import { UserPlus, Briefcase, BellDot, Rocket } from "lucide-react";
 
 const steps = [

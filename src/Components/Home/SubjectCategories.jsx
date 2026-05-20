@@ -1,23 +1,26 @@
 "use client"
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { At, Flask, Globe, MathOperations } from "@gravity-ui/icons";
-import { GoTelescope } from "react-icons/go";
+import { GoTelescope, GoTelescopeFill } from "react-icons/go";
+import { At, Flask, MathOperations } from "@gravity-ui/icons";
+import { Globe } from "lucide-react";
+import { PiMathOperations } from "react-icons/pi";
 
 const categories = [
     { name: "Mathematics", icon: <MathOperations className="text-blue-500 text-3xl" />, tutors: "12+ Tutors" },
-    { name: "Physics", icon: <GoTelescope className="text-purple-500 text-3xl" />, tutors: "8+ Tutors" },
+    { name: "Physics", icon: <GoTelescopeFill className="text-purple-500 text-3xl" />, tutors: "8+ Tutors" },
     { name: "Chemistry", icon: <Flask className="text-red-500 text-3xl" />, tutors: "9+ Tutors" },
     { name: "English", icon: <Globe className="text-green-500 text-3xl" />, tutors: "15+ Tutors" },
     { name: "ICT", icon: <At className="text-orange-500 text-3xl" />, tutors: "7+ Tutors" },
-    // লুপটা স্মুথ রাখার জন্য কয়েকটা ডুপ্লিকেট আইটেম অ্যাড করছি
-    { name: "Mathematics", icon: <MathOperations className="text-blue-500 text-3xl" />, tutors: "12+ Tutors" },
-    { name: "Physics", icon: <GoTelescope className="text-purple-500 text-3xl" />, tutors: "8+ Tutors" },
+
+    { name: "Mathematics", icon: <PiMathOperations className="text-blue-500 text-3xl" />, tutors: "12+ Tutors" },
+
+    { name: "Physics", icon: <GoTelescope  className="text-purple-500 text-3xl" />, tutors: "8+ Tutors" },
 ];
 
 export const SubjectCategories = () => {
     return (
-        // হালকা ব্লু থিম ব্যাকগ্রাউন্ড
+       
         <section className="py-24 bg-gradient-to-b from-white to-blue-50/50 dark:from-[#0A0F1C] dark:to-[#0d1425] overflow-hidden">
             <div className="container mx-auto px-6 mb-16 relative z-10">
                 <div className="text-center">
@@ -39,7 +42,7 @@ export const SubjectCategories = () => {
                 <motion.div
                     className="flex gap-6 whitespace-nowrap"
                     animate={{
-                        x: [0, -1000], 
+                        x: [0, -1000],
                     }}
                     transition={{
                         x: {

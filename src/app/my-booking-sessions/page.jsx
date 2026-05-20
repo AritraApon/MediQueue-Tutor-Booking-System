@@ -5,6 +5,10 @@ import { headers } from 'next/headers';
 import Link from 'next/link';
 import React from 'react';
 
+export const metadata = {
+  title: "My Bookings | MediQueue",
+  description: "Track your scheduled learning sessions and tutors in one place.",
+};
 
 const MyBookingSessions = async () => {
 

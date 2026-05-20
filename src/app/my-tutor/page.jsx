@@ -6,6 +6,10 @@ import {  PersonStanding } from "lucide-react";
 import { headers } from "next/headers";
 import Image from "next/image";
 
+export const metadata = {
+  title: "My Tutors | MediQueue",
+  description: "Manage and update the tutors you have added to the MediQueue platform.",
+};
 
 const MyTutorPage = async () => {
 

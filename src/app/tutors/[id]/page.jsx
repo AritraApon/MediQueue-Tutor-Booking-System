@@ -7,7 +7,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-
+export const metadata = {
+  title: "Tutor Profile | MediQueue",
+  description: "View tutor experience, available slots, and book your session instantly on MediQueue.",
+};
 
 const TutorDetailsPage = async ({ params }) => {
     const { id } = await params;

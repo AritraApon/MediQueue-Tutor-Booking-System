@@ -118,7 +118,7 @@ const Navbar = () => {
                                 size="sm"
                                 className="font-bold  border-2 bg-red-600  rounded-full p-4 text-white text-lg"
                             >
-                                <LogOut/>
+                                <LogOut />
                             </Button>
 
                         </div>
@@ -179,7 +179,7 @@ const Navbar = () => {
                                 aria-label="Open Menu"
                                 onPress={() => setIsOpen(true)}
                             >
-                                <ChartBar/>
+                                <ChartBar />
                             </Drawer.Trigger>
 
                             <Drawer.Backdrop />
@@ -262,17 +262,48 @@ const Navbar = () => {
 
 
                     <div>
-                        <Link href="/" className="flex items-center gap-2">
-                            <Image src={'/logo.png'} alt='logo' width={30} height={30} />
-                            <h1 className="text-lg font-bold bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent">
-                                MediQueue
-                            </h1>
-                        </Link>
-                    </div>
+                        <div className="flex items-center gap-5 justify-between w-full px-4 py-2 lg:hidden">
+                            {/* লোগো সেকশন */}
+                            <Link href="/" className="flex items-center gap-2 group">
+                                <h1 className="text-xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent transition-all group-hover:scale-105">
+                                    MediQueue
+                                </h1>
+                            </Link>
 
+                            {/* ইউজার প্রোফাইল বা লগইন বাটন */}
+                            <div className="flex items-center">
+                                {user ? (
+                                    <Link
+                                        href="/profile"
+                                        className="ring-2 ring-blue-500 ring-offset-2 rounded-full overflow-hidden transition-transform active:scale-90"
+                                    >
+                                        <Image
+                                            src={user?.image}
+                                            alt="user image"
+                                            width={20}
+                                            height={20}
+                                            className="rounded-full object-cover shadow-sm"
+                                        />
+                                    </Link>
+                                ) : (
+                                    <Link href="/login">
+                                        <Button
+                                            variant="flat"
+                                            size="sm"
+                                            className="font-bold bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 py-1 h-9 shadow-md shadow-blue-200 transition-all active:scale-95"
+                                        >
+                                            Login
+                                        </Button>
+                                    </Link>
+                                )}
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
-        </nav>
+
+        </nav >
     );
 };
 

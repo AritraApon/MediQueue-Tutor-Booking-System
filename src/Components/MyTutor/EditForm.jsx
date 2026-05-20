@@ -11,10 +11,12 @@ const EditForm = ({ myTutors }) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const updatedData = Object.fromEntries(formData);
+
         const { data: tokenData } = await authClient.token()
 
         try {
-            const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}tutors/${myTutors._id}`, {
+            const res = await
+             fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}/tutors/${myTutors._id}`, {
                 method: "PATCH",
                 headers: {
                     'content-type': 'application/json',
@@ -27,9 +29,9 @@ const EditForm = ({ myTutors }) => {
 
             if (data.modifiedCount > 0) {
                 toast.success("Successfully UserInfo Update");
-
+                  router.refresh()
                 if (onClose) onClose();
-                 router.refresh()
+
             }
         } catch (error) {
             console.error("Update failed:", error);

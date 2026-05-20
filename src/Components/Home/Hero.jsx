@@ -25,21 +25,21 @@ const Hero = () => {
             description: "Connect with certified educators on MediQueue. From Mathematics to Creative Arts, find the perfect mentor to guide your journey.",
             buttonText: "Find a Tutor",
             link: "/tutors",
-            image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2070&auto=format&fit=crop"
+            image: "https://i.ibb.co.com/CRB968H/photo-1523240795612-9a054b0db644-q-80-w-2070-auto-format-fit-crop.jpg"
         },
         {
             title: "Seamless Booking, Anytime, Anywhere",
             description: "Skip the manual scheduling hassle. Browse availability, book your preferred time slots, and manage your learning sessions with ease.",
             buttonText: "Book a Session",
             link: "/tutors",
-            image: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=2070&auto=format&fit=crop"
+            image: "https://i.ibb.co.com/0j8HkcFQ/photo-1434030216411-0b793f4b4173-q-80-w-2070-auto-format-fit-crop.jpg"
         },
         {
             title: "Elevate Your Skills for the Future",
             description: "Join our growing community of learners. Get personalized 1-on-1 sessions designed to help you excel in your professional and academic life.",
             buttonText: "Join Now",
             link: "/register",
-            image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2070&auto=format&fit=crop"
+            image: "https://i.ibb.co.com/C3H8bPcP/photo-1522202176988-66273c2fd55f-q-80-w-2070-auto-format-fit-crop.jpg"
         }
     ];
 
@@ -71,15 +71,14 @@ const Hero = () => {
                                     {slide.description}
                                 </p>
                                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                    <Button
-                                        as={Link}
-                                        href={slide.link}
+                                    <Link href={'/tutors'}><Button
+
                                         color="primary"
                                         size="lg"
                                         className="font-bold px-10 rounded-full h-14 text-lg shadow-xl"
                                     >
                                         {slide.buttonText}
-                                    </Button>
+                                    </Button></Link>
                                     <Button
                                         as={Link}
                                         href="/how-it-works"

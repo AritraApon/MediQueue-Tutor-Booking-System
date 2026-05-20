@@ -2,9 +2,9 @@
 import { authClient } from "@/lib/auth-client";
 import Image from "next/image";
 import Link from "next/link";
-import { FaArrowCircleLeft } from "react-icons/fa";
 import { motion } from 'framer-motion';
 import EditModal from "./EditModal";
+import { CircleArrowLeft } from "lucide-react";
 
 
 const ProfileCard = () => {
@@ -29,7 +29,7 @@ const ProfileCard = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                 >
-                    {/* ১. ব্যানার: ব্লু গ্রেডিয়েন্ট থিম */}
+
                     <div className="h-36 w-full bg-gradient-to-r from-blue-600 via-blue-500 to-cyan-400"></div>
 
 
@@ -61,11 +61,7 @@ const ProfileCard = () => {
 
 
                         <div className="card-actions w-full px-4">
-                            {/* <Link href={'/updateprofile'} className="w-full">
-                <button className="btn w-full h-12 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 border-none text-white font-bold rounded-xl shadow-lg shadow-blue-200 dark:shadow-none transition-all duration-300 transform active:scale-95">
-                  Edit Profile
-                </button>
-              </Link> */}
+
                             <EditModal />
                         </div>
                     </div>
@@ -75,7 +71,7 @@ const ProfileCard = () => {
                 <div className="mt-10">
                     <Link href={'/'}>
                         <button className="group flex items-center gap-3 text-slate-500 hover:text-blue-600 font-bold transition-all duration-300">
-                            <FaArrowCircleLeft className="text-2xl group-hover:-translate-x-2 transition-transform duration-300" />
+                            <CircleArrowLeft className="text-2xl group-hover:-translate-x-2 transition-transform duration-300" />
                             <span className="text-xl">Back to Home</span>
                         </button>
                     </Link>

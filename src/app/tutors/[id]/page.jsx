@@ -6,7 +6,7 @@ import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { BsFillCalendar2DateFill } from "react-icons/bs";
+
 
 
 const TutorDetailsPage = async ({ params }) => {

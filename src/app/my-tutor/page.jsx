@@ -2,9 +2,10 @@ import DeleteButton from "@/Components/MyTutor/DeleteButton";
 import EditForm from "@/Components/MyTutor/EditForm";
 import { auth } from "@/lib/auth";
 import { getMyAddTutorsInfo } from "@/lib/tutorData";
+import {  PersonStanding } from "lucide-react";
 import { headers } from "next/headers";
 import Image from "next/image";
-import { FaCheckToSlot } from "react-icons/fa6";
+
 
 const MyTutorPage = async () => {
 
@@ -80,7 +81,7 @@ const MyTutorPage = async () => {
                                     {/* Total Slot */}
                                     <td className="px-6 py-5">
                                         <div className="flex items-center gap-1  ">
-                                            <span className="text-green-400 text-sm"><FaCheckToSlot /></span>
+                                            <span className="text-green-400 text-sm"><PersonStanding/></span>
                                             <span className="text-sm font-bold  dark:text-gray-300">{tutor.totalSlot || 0}</span>
                                         </div>
                                     </td>

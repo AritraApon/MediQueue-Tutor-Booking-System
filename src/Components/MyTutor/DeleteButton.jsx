@@ -1,13 +1,19 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
 import { toast } from "react-hot-toast"; // বা তোর পছন্দের কোনো টোস্ট লাইব্রেরি
 
 const DeleteButton = ({ tutor }) => {
 
     const handleDelete = async () => {
+        const {data:tokenData} = await authClient.token()
+
         try {
             const res = await fetch(`http://localhost:5000/tutors/${tutor._id}`, {
                 method: "DELETE",
+                headers:{
+                    'Authorization': `Bearer ${tokenData?.token}`,
+                }
             });
             const data = await res.json();
 

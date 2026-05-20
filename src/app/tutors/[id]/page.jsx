@@ -53,8 +53,8 @@ const TutorDetailsPage = async ({ params }) => {
                     <div className="lg:col-span-1">
                         <div className="bg-white dark:bg-[#111827] rounded-[2.5rem] p-6 shadow-xl shadow-blue-500/5 border border-blue-50 dark:border-blue-900/20 sticky top-10">
                             <Image
-                                src={tutor.photo}
-                                alt={tutor.tutorName}
+                                src={tutor?.photo || '/logo.png'}
+                                alt={tutor?.tutorName || 'Tutor Name'}
                                 width={400}
                                 height={400}
                                 className="w-full h-80 object-cover rounded-[2rem] shadow-md mb-6"
@@ -62,7 +62,7 @@ const TutorDetailsPage = async ({ params }) => {
                             <div className="space-y-4">
                                 <div className="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-3">
                                     <span className="text-gray-500 dark:text-gray-400 font-medium">Hourly Fee</span>
-                                    <span className="text-2xl font-black text-blue-600">${tutor.hourlyFee}</span>
+                                    <span className="text-2xl font-black text-blue-600">${tutor?.hourlyFee}</span>
                                 </div>
                                 <div className="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-3">
                                     <span className="text-gray-500 dark:text-gray-400 font-medium">Session Start Date</span>
@@ -73,7 +73,7 @@ const TutorDetailsPage = async ({ params }) => {
                                 <div className="flex justify-between items-center pb-1">
                                     <span className="text-gray-500 dark:text-gray-400 font-medium">Available Slots</span>
                                     <span className="badge px-3 py-1 bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 rounded-full text-xs font-bold">
-                                        {tutor.totalSlot} Left
+                                        {tutor?.totalSlot} Left
                                     </span>
                                 </div>
                             </div>
@@ -101,20 +101,20 @@ const TutorDetailsPage = async ({ params }) => {
                         <div className="bg-white dark:bg-[#111827] rounded-[2.5rem] p-8 md:p-12 shadow-xl shadow-blue-500/5 border border-blue-50 dark:border-blue-900/20">
                             <div className="flex flex-wrap gap-3 mb-6">
                                 <span className="px-4 py-1.5 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 rounded-full text-xs font-bold uppercase tracking-widest">
-                                    {tutor.subject}
+                                    {tutor?.subject}
                                 </span>
                                 <span className="px-4 py-1.5 bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 rounded-full text-xs font-bold uppercase tracking-widest">
-                                    {tutor.teachingMode}
+                                    {tutor?.teachingMode}
                                 </span>
                             </div>
 
                             <h1 className="text-4xl md:text-5xl font-black text-blue-900 dark:text-white mb-4 leading-tight">
-                                {tutor.tutorName}
+                                {tutor?.tutorName}
                             </h1>
 
                             <p className="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-8">
                                 I am an expert in <span className="font-bold text-blue-600">{tutor.subject}</span> with over <span className="font-bold text-blue-600">{tutor.experience}</span>.
-                                Currently providing professional sessions in <span className="font-medium text-gray-900 dark:text-gray-200">{tutor.location}</span>.
+                                Currently providing professional sessions in <span className="font-medium text-gray-900 dark:text-gray-200">{tutor?.location}</span>.
                             </p>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-8 border-t border-gray-100 dark:border-gray-800">
@@ -126,7 +126,7 @@ const TutorDetailsPage = async ({ params }) => {
                                     </div>
                                     <div>
                                         <h4 className="text-sm font-bold text-gray-400 uppercase tracking-tighter">Available Time</h4>
-                                        <p className="text-blue-900 dark:text-white font-bold">{tutor.availableTime}</p>
+                                        <p className="text-blue-900 dark:text-white font-bold">{tutor?.availableTime}</p>
                                     </div>
                                 </div>
 
@@ -138,7 +138,7 @@ const TutorDetailsPage = async ({ params }) => {
                                     </div>
                                     <div>
                                         <h4 className="text-sm font-bold text-gray-400 uppercase tracking-tighter">Teaching Days</h4>
-                                        <p className="text-blue-900 dark:text-white font-bold">{tutor.availableDays}</p>
+                                        <p className="text-blue-900 dark:text-white font-bold">{tutor?.availableDays}</p>
                                     </div>
                                 </div>
                             </div>
@@ -148,7 +148,7 @@ const TutorDetailsPage = async ({ params }) => {
                         <div className="bg-white dark:bg-[#111827] rounded-[2.5rem] p-8 shadow-xl shadow-blue-500/5 border border-blue-50 dark:border-blue-900/20">
                             <h3 className="text-xl font-black text-blue-900 dark:text-white mb-4">Background & Experience</h3>
                             <p className="text-gray-600 dark:text-gray-400 leading-relaxed whitespace-pre-line">
-                                {tutor.experience}
+                                {tutor?.experience}
                             </p>
                         </div>
                     </div>

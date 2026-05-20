@@ -1,5 +1,8 @@
+import { headers } from "next/headers"
+import { auth } from "./auth"
+
 //  All tutor data
- export const getAllTutorsInfo =  async(search = "")=>{
+export const getAllTutorsInfo = async (search = "") => {
     const res = await fetch(`http://localhost:5000/tutors?search=${search}`)
     const data = await res.json()
     return data
@@ -7,7 +10,7 @@
 }
 
 // home page 6 tutors info
-export const getSixTutorsInfo = async()=>{
+export const getSixTutorsInfo = async () => {
     const res = await fetch(`http://localhost:5000/six-tutors`);
     const data = await res.json()
     return data
@@ -23,21 +26,52 @@ export const getSixTutorsInfo = async()=>{
 
 // tutors Details page
 
-export const getTutorDetailsInfo = async(id)=>{
-    const res = await fetch (`http://localhost:5000/tutors/${id}`)
-    const data =await res.json()
-    return data
+export const getTutorDetailsInfo = async (id) => {
+    try {
+
+       const {token} = await auth.api.getToken({
+        headers:await headers()
+       })
+
+
+        const res = await fetch(`http://localhost:5000/tutors/${id}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token || ''}`,
+                'Content-Type': 'application/json',
+            },
+            cache: 'no-store'
+        });
+
+
+        if (!res.ok) {
+            console.error(`Fetch Failed: Status ${res.status}`);
+            return null;
+        }
+
+        const data = await res.json();
+        return data;
+
+    } catch (error) {
+        console.error("Tutor data fetch korte error hoise:", error);
+        return null;
+    }
 }
 
 // email filter data
 
 export const getMyAddTutorsInfo = async (user) => {
-
-    if (!user?.email) return [];
+    const {token} = await auth.api.getToken({
+        headers:await headers()
+       })
 
     try {
         const res = await fetch(`http://localhost:5000/my-tutors?email=${user.email}`, {
-            cache: 'no-store',
+
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            cache: 'no-store'
         });
 
         if (!res.ok) {
@@ -57,9 +91,18 @@ export const getMyAddTutorsInfo = async (user) => {
 
 // my session data
 
- export const getBookingData = async(id)=>{
-    const res = await fetch(`http://localhost:5000/my-bookings/${id}`);
+export const getBookingData = async (id) => {
+
+   const {token} = await auth.api.getToken({
+        headers:await headers()
+       })
+
+    const res = await fetch(`http://localhost:5000/my-bookings/${id}`, {
+        headers: {
+            'Authorization': `Bearer ${token}`
+        }
+    });
     const data = await res.json();
     return data
 
- }
+}

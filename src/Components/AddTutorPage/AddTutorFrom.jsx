@@ -13,7 +13,7 @@ import { motion } from 'framer-motion';
 import { ListBox, Select } from "@heroui/react";
 import { refreshTutors } from "@/app/actions/tutorActions";
 import toast from "react-hot-toast";
-import { useSession } from "@/lib/auth-client";
+import { authClient, useSession } from "@/lib/auth-client";
 
 
 
@@ -36,12 +36,13 @@ const AddTutorFrom = () => {
     addTutorData.review = 0;
 
     // console.log("Sending Data:", addTutorData);
-
+      const {data:tokenData} = await authClient.token()
     try {
         const res = await fetch(`http://localhost:5000/tutors`, {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${tokenData?.token}`,
             },
             body: JSON.stringify(addTutorData)
         });

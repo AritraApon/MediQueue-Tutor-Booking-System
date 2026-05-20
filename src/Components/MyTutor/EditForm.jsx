@@ -1,4 +1,5 @@
 "use client";
+import { authClient } from "@/lib/auth-client";
 import { Envelope } from "@gravity-ui/icons";
 import { Button, Modal } from "@heroui/react";
 import { motion } from "framer-motion";
@@ -6,16 +7,18 @@ import toast from "react-hot-toast";
 
 const EditForm = ({ myTutors }) => {
 
-    const handleUpdate = async (e, onClose) => { 
+    const handleUpdate = async (e, onClose) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const updatedData = Object.fromEntries(formData);
+        const {data:tokenData} = await authClient.token()
 
         try {
             const res = await fetch(`http://localhost:5000/tutors/${myTutors._id}`, {
                 method: "PATCH",
                 headers: {
-                    'content-type': 'application/json'
+                    'content-type': 'application/json',
+                    'Authorization': `Bearer ${tokenData?.token}`,
                 },
                 body: JSON.stringify(updatedData)
             });

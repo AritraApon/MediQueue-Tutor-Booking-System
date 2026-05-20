@@ -35,7 +35,7 @@ const AllTutors = ({ tutorInfo }) => {
                                 <div className="w-full relative flex items-center">
                                     <Input
                                         type="text"
-                                        placeholder="Find by tutor name (e.g. Aritro)..."
+                                        placeholder="Find by tutor name ..."
                                         variant="flat"
                                         radius="lg"
                                         size="lg"

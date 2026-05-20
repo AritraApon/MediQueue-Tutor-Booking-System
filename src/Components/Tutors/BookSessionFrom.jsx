@@ -1,5 +1,5 @@
 "use client";
-import { useSession } from "@/lib/auth-client";
+import { authClient, useSession } from "@/lib/auth-client";
 import { Envelope } from "@gravity-ui/icons";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 import { useRouter } from "next/navigation";
@@ -9,6 +9,8 @@ const BookSessionFrom = ({ tutor }) => {
       const router = useRouter()
     const { data: session } = useSession();
     const user = session?.user;
+
+
 
     const handleBooking = async (e) => {
         e.preventDefault();
@@ -28,10 +30,15 @@ const BookSessionFrom = ({ tutor }) => {
             status: "Booked"
         };
 
+        const {data:tokenData} = await authClient.token()
+
         try {
             const res = await fetch(`http://localhost:5000/bookings`, {
                 method: "POST",
-                headers: { 'content-type': 'application/json' },
+                headers: {
+                    'content-type': 'application/json',
+                    'Authorization': `Bearer ${tokenData?.token}`,
+                 },
                 body: JSON.stringify(bookingInfo)
             });
             const data = await res.json();

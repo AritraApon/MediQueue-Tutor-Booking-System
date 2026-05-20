@@ -39,13 +39,13 @@ export const SubjectCategories = () => {
                 <motion.div
                     className="flex gap-6 whitespace-nowrap"
                     animate={{
-                        x: [0, -1000], // Right to Left মুভমেন্ট
+                        x: [0, -1000], 
                     }}
                     transition={{
                         x: {
                             repeat: Infinity,
                             repeatType: "loop",
-                            duration: 20, // স্পিড কন্ট্রোল করতে পারো এখান থেকে
+                            duration: 20,
                             ease: "linear",
                         },
                     }}
@@ -77,7 +77,7 @@ export const SubjectCategories = () => {
                 </motion.div>
             </div>
 
-         
+
             <div className="mt-10 h-px bg-gradient-to-r from-transparent via-blue-200 dark:via-blue-800 to-transparent w-full opacity-50" />
         </section>
     );

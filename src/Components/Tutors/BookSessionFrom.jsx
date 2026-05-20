@@ -2,50 +2,52 @@
 import { useSession } from "@/lib/auth-client";
 import { Envelope } from "@gravity-ui/icons";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const BookSessionFrom = ({ tutor }) => {
+      const router = useRouter()
+    const { data: session } = useSession();
+    const user = session?.user;
 
-const { data: session } = useSession();
- const user = session?.user;
+    const handleBooking = async (e) => {
+        e.preventDefault();
 
-const handleBooking = async (e) => {
-    e.preventDefault();
+        if (!user) {
+            toast.error("Please login to book a session");
+            return;
+        }
 
-    if (!user) {
-        toast.error("Please login to book a session");
-        return;
-    }
+        const bookingInfo = {
+            tutorId: tutor._id,
+            tutorName: tutor?.tutorName,
+            studentName: e.target.name.value,
+            studentEmail: user?.email,
+            studentId: user?.id,
+            phone: e.target.phone.value,
+            status: "Booked"
+        };
 
-    const bookingInfo = {
-        tutorId: tutor._id,
-        tutorName: tutor?.tutorName,
-        studentName: user?.name || user?.displayName,
-        studentEmail: user?.email,
-        studentId: user?.id,
-        phone: e.target.phone.value,
-        status: "Booked"
+        try {
+            const res = await fetch(`http://localhost:5000/bookings`, {
+                method: "POST",
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(bookingInfo)
+            });
+            const data = await res.json();
+
+            if (!res.ok) {
+                return toast.error(data.message || "Booking failed!");
+            }
+            if (data.bookingResult?.insertedId) {
+                toast.success("Session Booked Successfully!");
+                router.refresh()
+            }
+        } catch (error) {
+            console.error("Booking Error:", error);
+            toast.error("Something went wrong!");
+        }
     };
-
-    try {
-        const res = await fetch(`http://localhost:5000/bookings`, {
-            method: "POST",
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(bookingInfo)
-        });
-        const data = await res.json();
-
-        if (!res.ok) {
-            return toast.error(data.message || "Booking failed!");
-        }
-        if (data.bookingResult?.insertedId) {
-            toast.success("Session Booked Successfully!");
-        }
-    } catch (error) {
-        console.error("Booking Error:", error);
-        toast.error("Something went wrong!");
-    }
-};
 
     return (
         <div>
@@ -65,7 +67,7 @@ const handleBooking = async (e) => {
                             </Modal.Header>
                             <Modal.Body className="p-6">
                                 <Surface variant="default">
-                                    <form onSubmit={handleBooking}  className="flex flex-col gap-4">
+                                    <form onSubmit={handleBooking} className="flex flex-col gap-4">
                                         {/* Name  */}
                                         <TextField className="w-full" name="name" type="text">
                                             <Label>Student Name</Label>
@@ -78,8 +80,8 @@ const handleBooking = async (e) => {
                                             <Input placeholder="Enter your phone number" />
                                         </TextField>
 
-                                         {/*Tutor Name  */}
-                                        <TextField defaultValue={tutor.tutorName} className="w-full" name="name" type="text">
+                                        {/*Tutor Name  */}
+                                        <TextField defaultValue={tutor.tutorName} className="w-full" name="tutorName" type="text">
                                             <Label>Tutor Name</Label>
                                             <Input placeholder="Enter your name" />
                                         </TextField>

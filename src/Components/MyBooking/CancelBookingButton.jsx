@@ -1,9 +1,10 @@
 'use client'
 import { Button } from "@heroui/react";
+import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 
 const CancelBookingButton = ({ booking }) => {
-
+       const router = useRouter()
     const handleCancel = async () => {
 
         try {
@@ -14,6 +15,7 @@ const CancelBookingButton = ({ booking }) => {
 
             if (data.modifiedCount > 0) {
                 toast.success("Session Cancelled!");
+                router.refresh()
             }
         } catch (error) {
             toast.error("Failed to cancel session");

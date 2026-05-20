@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Bars, Moon, Sun } from "@gravity-ui/icons";
 import { Button, Drawer } from "@heroui/react";
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { authClient } from '@/lib/auth-client';
@@ -14,14 +14,15 @@ import { IoLogOutSharp } from 'react-icons/io5';
 
 
 const Navbar = () => {
+    const router = useRouter();
     const pathName = usePathname();
     const { theme, setTheme } = useTheme();
 
-    // কোনো এক্সট্রা হুক লাগবে না, সাধারণ জাভাস্ক্রিপ্ট স্টেট
+
     const [isOpen, setIsOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
 
-    // ডার্ক মোড হাইড্রেশন এরর ফিক্স
+
     useEffect(() => {
         setMounted(true);
     }, []);
@@ -30,18 +31,19 @@ const Navbar = () => {
         await authClient.signOut({
             fetchOptions: {
                 onSuccess: () => {
-                    router.push("/login"); // redirect to login page
+                    router.push("/login");
                 },
             },
         });
+        router.refresh()
         toast.success('log out')
     }
 
     const {
         data: session,
-        isPending, //loading state
-        error, //error object
-        refetch //refetch the session
+        isPending,
+        error,
+        refetch 
     } = authClient.useSession()
 
     const user = session?.user;

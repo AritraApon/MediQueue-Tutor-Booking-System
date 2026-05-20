@@ -1,12 +1,24 @@
 import BookSessionFrom from "@/Components/Tutors/BookSessionFrom";
+import { auth } from "@/lib/auth";
 import { getTutorDetailsInfo } from "@/lib/tutorData";
+import { headers } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { BsCalendar2DateFill } from "react-icons/bs";
 
 const TutorDetailsPage = async ({ params }) => {
     const { id } = await params;
     const tutor = await getTutorDetailsInfo(id);
+
+        const session = await auth.api.getSession({
+          headers: await headers() // you need to pass the headers object.
+      })
+
+      if(!session){
+        redirect('/login')
+      }
+
 
     if (!tutor) {
         return (
@@ -15,6 +27,13 @@ const TutorDetailsPage = async ({ params }) => {
             </div>
         );
     }
+
+    const today = new Date();
+    const sessionDate = new Date(tutor.sessionDate);
+
+    const isSlotEmpty = parseInt(tutor.totalSlot) <= 0;
+    const isBookingNotStarted = today < sessionDate;
+    const isSessionExpired = today > sessionDate;
 
     return (
         <div className="min-h-screen bg-[#F8FAFC] dark:bg-[#070B14] py-12 px-4 sm:px-6 lg:px-8">
@@ -48,7 +67,7 @@ const TutorDetailsPage = async ({ params }) => {
                                 <div className="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-3">
                                     <span className="text-gray-500 dark:text-gray-400 font-medium">Session Start Date</span>
                                     <span className="flex items-center gap-1 font-bold dark:text-white">
-                                     <BsCalendar2DateFill /> {tutor?.sessionDate }
+                                        <BsCalendar2DateFill /> {tutor?.sessionDate}
                                     </span>
                                 </div>
                                 <div className="flex justify-between items-center pb-1">
@@ -60,7 +79,19 @@ const TutorDetailsPage = async ({ params }) => {
                             </div>
 
                             {/* BOOK SESSION BUTTON */}
-                          <BookSessionFrom tutor={tutor}   />
+
+                            {isSlotEmpty ? (
+                                <p className="text-red-500 font-bold bg-red-50 p-3 rounded-xl border border-red-100">
+                                    No available slots left.
+                                </p>
+                            ) : isBookingNotStarted ? (
+                                <p className="text-orange-500 font-bold bg-orange-50 p-3 rounded-xl border border-orange-100">
+                                    Booking is not available yet. (Starts on: {tutor.sessionDate})
+                                </p>
+                            ) : (
+                                <BookSessionFrom tutor={tutor} />
+                            )}
+
                         </div>
                     </div>
 

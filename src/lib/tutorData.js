@@ -1,11 +1,25 @@
 //  All tutor data
- export const getAllTutorsInfo =  async()=>{
-    const res = await fetch(`http://localhost:5000/tutors`)
+ export const getAllTutorsInfo =  async(search = "")=>{
+    const res = await fetch(`http://localhost:5000/tutors?search=${search}`)
     const data = await res.json()
-
     return data
 
 }
+
+// home page 6 tutors info
+export const getSixTutorsInfo = async()=>{
+    const res = await fetch(`http://localhost:5000/six-tutors`);
+    const data = await res.json()
+    return data
+}
+
+// search tutor
+
+// export const getSearchTutor = async () =>{
+//     const res = await fetch(`http://localhost:5000/tutors?search=${search}`)
+//     const data = await res.json()
+//     return data
+// }
 
 // tutors Details page
 
@@ -46,6 +60,6 @@ export const getMyAddTutorsInfo = async (user) => {
  export const getBookingData = async(id)=>{
     const res = await fetch(`http://localhost:5000/my-bookings/${id}`);
     const data = await res.json();
-    return data 
+    return data
 
  }

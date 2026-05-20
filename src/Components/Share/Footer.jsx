@@ -1,8 +1,7 @@
 "use client"
 
-import { Envelope, LogoFacebook, LogoGithub, LogoLinkedin } from "@gravity-ui/icons";
 import Link from "next/link";
-import { BiLogoTwitter, BiPhone } from "react-icons/bi";
+import { BiEnvelope, BiLogoFacebook, BiLogoGithub, BiLogoLinkedin, BiLogoTwitter, BiPhone } from "react-icons/bi";
 import { FaLocationPin } from "react-icons/fa6";
 
 
@@ -27,13 +26,13 @@ const Footer = () => {
                                 <BiLogoTwitter />
                             </a>
                             <a href="#" className="p-2 rounded-full bg-gray-50 dark:bg-zinc-900 text-gray-400 hover:text-blue-600 transition-colors">
-                                <LogoLinkedin />
+                                <BiLogoLinkedin />
                             </a>
                             <a href="#" className="p-2 rounded-full bg-gray-50 dark:bg-zinc-900 text-gray-400 hover:text-blue-600 transition-colors">
-                                <LogoGithub />
+                                <BiLogoGithub />
                             </a>
                             <a href="#" className="p-2 rounded-full bg-gray-50 dark:bg-zinc-900 text-gray-400 hover:text-blue-600 transition-colors">
-                                <LogoFacebook />
+                                <BiLogoFacebook />
                             </a>
                         </div>
                     </div>
@@ -73,7 +72,7 @@ const Footer = () => {
                                 <span>+880 1234 567890</span>
                             </li>
                             <li className="flex items-center gap-3 text-gray-500">
-                                <Envelope className="flex-shrink-0" />
+                                <BiEnvelope className="flex-shrink-0" />
                                 <span>support@mediqueue.com</span>
                             </li>
                         </ul>

@@ -1,10 +1,12 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
 import { AlertDialog, Button } from "@heroui/react";
-import { toast } from "react-hot-toast"; // বা তোর পছন্দের কোনো টোস্ট লাইব্রেরি
+import { useRouter } from "next/navigation";
+import { toast } from "react-toastify";
+
 
 const DeleteButton = ({ tutor }) => {
-
+    const router = useRouter()
     const handleDelete = async () => {
         const {data:tokenData} = await authClient.token()
 
@@ -19,7 +21,7 @@ const DeleteButton = ({ tutor }) => {
 
             if (data.deletedCount > 0) {
                 toast.success(`${tutor.tutorName} deleted successfully!`);
-                window.location.reload();
+                router.refresh()
             }
         } catch (error) {
             console.error("Delete error:", error);

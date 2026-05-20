@@ -1,13 +1,14 @@
 'use client'
 import Link from "next/link";
-import {   Eye, EyeSlash } from "@gravity-ui/icons";
 import { Button, FieldError, Form, Input, Label, TextField, InputGroup } from "@heroui/react";
 import { useState } from "react";
 import { FaGoogle } from "react-icons/fa6";
 import { motion } from 'framer-motion';
 import { authClient } from "@/lib/auth-client";
-import toast from "react-hot-toast";
 import { redirect } from "next/navigation";
+import { Eye } from "lucide-react";
+import { BsEyeSlash } from "react-icons/bs";
+import { toast } from "react-toastify";
 
 
 
@@ -153,7 +154,7 @@ const SingUpFrom = () => {
                                     className="text-gray-400 hover:text-violet-600 transition-colors"
                                     onPress={() => setIsVisible(!isVisible)}
                                 >
-                                    {isVisible ? <Eye className="size-5" /> : <EyeSlash className="size-5" />}
+                                    {isVisible ? <Eye className="size-5" /> : <BsEyeSlash className="size-5" />}
                                 </Button>
                             </InputGroup.Suffix>
                         </InputGroup>

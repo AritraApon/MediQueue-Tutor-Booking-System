@@ -1,9 +1,9 @@
 "use client";
 import { authClient, useSession } from "@/lib/auth-client";
-import { Envelope } from "@gravity-ui/icons";
 import { Button, Input, Label, Modal, Surface, TextField } from "@heroui/react";
 import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
+
 
 const BookSessionFrom = ({ tutor }) => {
       const router = useRouter()

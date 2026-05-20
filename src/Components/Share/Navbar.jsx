@@ -8,9 +8,11 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { authClient } from '@/lib/auth-client';
-import toast from 'react-hot-toast';
 import { IoLogOutSharp } from 'react-icons/io5';
-import { Bars, Moon, Sun } from '@gravity-ui/icons';
+import { Moon, Sun } from 'lucide-react';
+import { AiOutlineBars } from 'react-icons/ai';
+import { toast } from 'react-toastify';
+
 
 
 const Navbar = () => {
@@ -179,7 +181,7 @@ const Navbar = () => {
                                 aria-label="Open Menu"
                                 onPress={() => setIsOpen(true)}
                             >
-                                <Bars />
+                                <AiOutlineBars />
                             </Drawer.Trigger>
 
                             <Drawer.Backdrop />

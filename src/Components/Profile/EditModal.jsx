@@ -15,8 +15,9 @@ import { authClient, useSession } from "@/lib/auth-client";
 
 import Image from "next/image";
 
+import { toast } from "react-toastify";
 import { BiEdit } from "react-icons/bi";
-import toast from "react-hot-toast";
+
 
 
 const EditModal = () => {

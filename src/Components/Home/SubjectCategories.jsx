@@ -2,16 +2,15 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { GoTelescope, GoTelescopeFill } from "react-icons/go";
-import { At, Flask, MathOperations } from "@gravity-ui/icons";
-import { Globe } from "lucide-react";
-import { PiMathOperations } from "react-icons/pi";
+import { AtSign, FlaskConical, Globe } from "lucide-react";
+import { PiMathOperations, PiMathOperationsBold } from "react-icons/pi";
 
 const categories = [
-    { name: "Mathematics", icon: <MathOperations className="text-blue-500 text-3xl" />, tutors: "12+ Tutors" },
+    { name: "Mathematics", icon: <PiMathOperationsBold className="text-blue-500 text-3xl" />, tutors: "12+ Tutors" },
     { name: "Physics", icon: <GoTelescopeFill className="text-purple-500 text-3xl" />, tutors: "8+ Tutors" },
-    { name: "Chemistry", icon: <Flask className="text-red-500 text-3xl" />, tutors: "9+ Tutors" },
+    { name: "Chemistry", icon: <FlaskConical className="text-red-500 text-3xl" />, tutors: "9+ Tutors" },
     { name: "English", icon: <Globe className="text-green-500 text-3xl" />, tutors: "15+ Tutors" },
-    { name: "ICT", icon: <At className="text-orange-500 text-3xl" />, tutors: "7+ Tutors" },
+    { name: "ICT", icon: <AtSign className="text-orange-500 text-3xl" />, tutors: "7+ Tutors" },
 
     { name: "Mathematics", icon: <PiMathOperations className="text-blue-500 text-3xl" />, tutors: "12+ Tutors" },
 
@@ -20,7 +19,7 @@ const categories = [
 
 export const SubjectCategories = () => {
     return (
-       
+
         <section className="py-24 bg-gradient-to-b from-white to-blue-50/50 dark:from-[#0A0F1C] dark:to-[#0d1425] overflow-hidden">
             <div className="container mx-auto px-6 mb-16 relative z-10">
                 <div className="text-center">

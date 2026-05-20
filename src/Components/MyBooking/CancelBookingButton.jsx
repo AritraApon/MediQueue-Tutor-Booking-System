@@ -2,7 +2,8 @@
 import { authClient } from "@/lib/auth-client";
 import { Button } from "@heroui/react";
 import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
+import { toast } from "react-toastify";
+
 
 const CancelBookingButton = ({ booking }) => {
     const router = useRouter()

@@ -1,16 +1,17 @@
 "use client";
 import { authClient } from "@/lib/auth-client";
-import { Envelope } from "@gravity-ui/icons";
 import { Button, Modal } from "@heroui/react";
-import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+import { BiEnvelope } from "react-icons/bi";
+import { toast } from "react-toastify";
 
 const EditForm = ({ myTutors }) => {
-
+    const router = useRouter()
     const handleUpdate = async (e, onClose) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const updatedData = Object.fromEntries(formData);
-        const {data:tokenData} = await authClient.token()
+        const { data: tokenData } = await authClient.token()
 
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}tutors/${myTutors._id}`, {
@@ -28,7 +29,7 @@ const EditForm = ({ myTutors }) => {
                 toast.success("Successfully UserInfo Update");
 
                 if (onClose) onClose();
-                window.location.reload();
+                 router.refresh()
             }
         } catch (error) {
             console.error("Update failed:", error);
@@ -58,7 +59,7 @@ const EditForm = ({ myTutors }) => {
                         <div className="p-8 pb-4">
                             <div className="flex items-center gap-3">
                                 <div className="p-2.5 bg-blue-600 rounded-xl text-white">
-                                    <Envelope size={20} />
+                                    <BiEnvelope size={20} />
                                 </div>
                                 <div>
                                     <h2 className="text-xl font-black text-gray-900 dark:text-white">Edit Tutor Info</h2>

@@ -68,8 +68,8 @@ const EditModal = () => {
 
                 <Button
                     variant="secondary"
-                    size="lg"
-                    className="w-70"
+                    size="sm"
+                    className="w-60"
                 >
                     <Edit size={18} />
                     Edit Profile

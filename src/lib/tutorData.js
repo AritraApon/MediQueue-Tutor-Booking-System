@@ -3,7 +3,10 @@ import { auth } from "./auth"
 
 //  All tutor data
 export const getAllTutorsInfo = async (search = "") => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}/tutors?search=${search}`)
+    const res = await
+    fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}/tutors?search=${search}`,{
+        cache: 'no-store'
+    })
     const data = await res.json()
     return data
 
@@ -11,7 +14,9 @@ export const getAllTutorsInfo = async (search = "") => {
 
 // home page 6 tutors info
 export const getSixTutorsInfo = async () => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}/six-tutors`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}/six-tutors`,{
+        cache: 'no-store'
+    });
     const data = await res.json()
     return data
 }
@@ -93,7 +98,8 @@ export const getBookingData = async (id) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}/my-bookings/${id}`, {
         headers: {
             'Authorization': `Bearer ${token}`
-        }
+        },
+        cache: 'no-store'
     });
     const data = await res.json();
     return data

@@ -9,7 +9,8 @@ const AllTutors = ({ tutorInfo }) => {
 
 
     const handleSearch = async () => {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}/tutors?search=${searchTerm}`);
+        const res = await
+        fetch(`${process.env.NEXT_PUBLIC_SERVER_URI}/tutors?search=${searchTerm}`);
         const data = await res.json();
         setTutors(data);
 
@@ -59,7 +60,7 @@ const AllTutors = ({ tutorInfo }) => {
                                     color="primary"
                                     radius="xl"
                                     size="lg"
-                                    className="w-full sm:w-auto font-bold px-10 h-[56px] text-lg shadow-lg shadow-blue-500/30 transition-transform active:scale-95"
+                                    className="w-full sm:w-auto font-bold px-10 h-14 text-lg shadow-lg shadow-blue-500/30 transition-transform active:scale-95"
                                 >
                                     Search
                                 </Button>

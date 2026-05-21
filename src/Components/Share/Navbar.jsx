@@ -168,14 +168,14 @@ const Navbar = () => {
 
 
             <div className='lg:hidden sticky top-0 z-50 w-full border-b bg-white/80 dark:bg-black/80 backdrop-blur-md'>
-                <div className='container mx-auto px-4 flex gap-3 items-center h-16'>
+                <div className='container mx-auto px-4 flex gap-4 justify-between  items-center h-16'>
 
 
-                    <div>
+                    <div className='flex items-center gap-3'>
                         <Drawer>
                             {/* Corrected Trigger: Removing the HeroUI Button to avoid nested <button> tags */}
                             <Drawer.Trigger
-                                className="p-2 hover:bg-default-100 rounded-lg transition-colors inline-flex items-center justify-center"
+                                className="p-2 hover:bg-default-100 rounded-lg transition-colors inline-flex items-center justify-center "
                                 aria-label="Open Menu"
                                 onPress={() => setIsOpen(true)}
                             >
@@ -258,19 +258,22 @@ const Navbar = () => {
                                 </Drawer.Dialog>
                             </Drawer.Content>
                         </Drawer>
+
+                       <div>
+                         <Link href="/" className="flex items-center gap-2 group">
+                            <h1 className="text-xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent transition-all group-hover:scale-105">
+                                MediQueue
+                            </h1>
+                        </Link>
+                       </div>
+
                     </div>
 
 
                     <div>
-                        <div className="flex items-center gap-5 justify-between w-full px-4 py-2 lg:hidden">
-                            {/* লোগো সেকশন */}
-                            <Link href="/" className="flex items-center gap-2 group">
-                                <h1 className="text-xl font-extrabold bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent transition-all group-hover:scale-105">
-                                    MediQueue
-                                </h1>
-                            </Link>
+                        <div className="flex items-center w-full px-4 py-2 lg:hidden">
 
-                            {/* ইউজার প্রোফাইল বা লগইন বাটন */}
+
                             <div className="flex items-center">
                                 {user ? (
                                     <Link
@@ -280,8 +283,8 @@ const Navbar = () => {
                                         <Image
                                             src={user?.image}
                                             alt="user image"
-                                            width={20}
-                                            height={20}
+                                            width={36}
+                                            height={36}
                                             className="rounded-full object-cover shadow-sm"
                                         />
                                     </Link>
@@ -290,7 +293,7 @@ const Navbar = () => {
                                         <Button
                                             variant="flat"
                                             size="sm"
-                                            className="font-bold bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 py-1 h-9 shadow-md shadow-blue-200 transition-all active:scale-95"
+                                            className="font-bold bg-blue-600 hover:bg-blue-700 text-white rounded-full px-6 py-1 h-9 shadow shadow-blue-200 transition-all active:scale-95"
                                         >
                                             Login
                                         </Button>

@@ -7,7 +7,7 @@ import EditModal from "./EditModal";
 import { CircleArrowLeft, LogOut, BookOpen, Users, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-const ProfileCard = ({ myBooking , myAddTutor  }) => {
+const ProfileCard = ({ myBookings , myAddTutors  }) => {
     const { data: session, isPending } = authClient.useSession();
     const user = session?.user;
     const router = useRouter();
@@ -88,7 +88,8 @@ const ProfileCard = ({ myBooking , myAddTutor  }) => {
                             className="grid grid-cols-1 sm:grid-cols-2 gap-6"
                         >
                             {/* Booking Stat Card */}
-                            <div className="bg-white dark:bg-zinc-900 p-8 rounded-[2.5rem] shadow-lg border border-gray-100 dark:border-zinc-800 flex items-center gap-6">
+
+                            <div  className="bg-white dark:bg-zinc-900 p-8 rounded-[2.5rem] shadow-lg border border-gray-100 dark:border-zinc-800 flex items-center gap-6">
                                 <div className="p-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl text-blue-600 dark:text-blue-400">
                                     <BookOpen className="w-8 h-8" />
                                 </div>
@@ -96,12 +97,12 @@ const ProfileCard = ({ myBooking , myAddTutor  }) => {
                                     <div>
                                         <p className="text-gray-500 dark:text-zinc-400 font-medium">My Bookings</p>
                                         <h3 className="text-3xl font-black text-gray-800 dark:text-white">
-                                            {myBooking?.length || 0}
+                                            {myBookings?.length || 0}
                                         </h3>
                                     </div>
                                 </Link>
-
                             </div>
+
 
                             {/* Tutors Stat Card */}
                             <div className="bg-white dark:bg-zinc-900 p-8 rounded-[2.5rem] shadow-lg border border-gray-100 dark:border-zinc-800 flex items-center gap-6">
@@ -114,7 +115,7 @@ const ProfileCard = ({ myBooking , myAddTutor  }) => {
                                     <div>
                                         <p className="text-gray-500 dark:text-zinc-400 font-medium">My Tutors</p>
                                         <h3 className="text-3xl font-black text-gray-800 dark:text-white">
-                                            {myAddTutor?.length || 0}
+                                            {myAddTutors?.length || 0}
                                         </h3>
                                     </div>
                                 </Link>

@@ -2,13 +2,13 @@ import DeleteButton from "@/Components/MyTutor/DeleteButton";
 import EditForm from "@/Components/MyTutor/EditForm";
 import { auth } from "@/lib/auth";
 import { getMyAddTutorsInfo } from "@/lib/tutorData";
-import {  PersonStanding } from "lucide-react";
+import { PersonStanding } from "lucide-react";
 import { headers } from "next/headers";
 import Image from "next/image";
 
 export const metadata = {
-  title: "My Tutors | MediQueue",
-  description: "Manage and update the tutors you have added to the MediQueue platform.",
+    title: "My Tutors | MediQueue",
+    description: "Manage and update the tutors you have added to the MediQueue platform.",
 };
 
 const MyTutorPage = async () => {
@@ -85,7 +85,7 @@ const MyTutorPage = async () => {
                                     {/* Total Slot */}
                                     <td className="px-6 py-5">
                                         <div className="flex items-center gap-1  ">
-                                            <span className="text-green-400 text-sm"><PersonStanding/></span>
+                                            <span className="text-green-400 text-sm"><PersonStanding /></span>
                                             <span className="text-sm font-bold  dark:text-gray-300">{tutor.totalSlot || 0}</span>
                                         </div>
                                     </td>
@@ -94,7 +94,7 @@ const MyTutorPage = async () => {
                                     <td className="px-6 py-5">
                                         <div className="flex justify-center items-center gap-3">
                                             {/* edit button  */}
-                                         <EditForm  myTutors={tutor} />
+                                            <EditForm myTutors={tutor} />
                                             {/* delete button  */}
                                             <DeleteButton tutor={tutor} />
                                         </div>

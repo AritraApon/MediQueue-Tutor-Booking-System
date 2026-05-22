@@ -21,7 +21,7 @@ const faqs = [
         answer: "Pro status is awarded based on your teaching history, student ratings, and profile completeness."
     },
     {
-        question: "How can I get tuition on SkillSphere?",
+        question: "How can I get tuition on MediQueue?",
         answer: "Once your profile is verified, you can apply directly to the tuition jobs posted by guardians or students."
     }
 ];

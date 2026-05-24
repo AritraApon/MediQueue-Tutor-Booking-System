@@ -7,7 +7,7 @@ import EditModal from "./EditModal";
 import { CircleArrowLeft, LogOut, BookOpen, Users, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
 
-const ProfileCard = ({ myBookings , myAddTutors  }) => {
+const ProfileCard = ({ myBookings, myAddTutors }) => {
     const { data: session, isPending } = authClient.useSession();
     const user = session?.user;
     const router = useRouter();
@@ -81,6 +81,7 @@ const ProfileCard = ({ myBookings , myAddTutors  }) => {
 
                     {/* Right Column: Statistics & Activities */}
                     <div className="lg:col-span-2 space-y-6">
+
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -89,7 +90,7 @@ const ProfileCard = ({ myBookings , myAddTutors  }) => {
                         >
                             {/* Booking Stat Card */}
 
-                            <div  className="bg-white dark:bg-zinc-900 p-8 rounded-[2.5rem] shadow-lg border border-gray-100 dark:border-zinc-800 flex items-center gap-6">
+                            <div className="bg-white dark:bg-zinc-900 p-8 rounded-[2.5rem] shadow-lg border border-gray-100 dark:border-zinc-800 flex items-center gap-6">
                                 <div className="p-4 bg-blue-100 dark:bg-blue-900/30 rounded-2xl text-blue-600 dark:text-blue-400">
                                     <BookOpen className="w-8 h-8" />
                                 </div>
@@ -105,12 +106,13 @@ const ProfileCard = ({ myBookings , myAddTutors  }) => {
 
 
                             {/* Tutors Stat Card */}
-                            <div className="bg-white dark:bg-zinc-900 p-8 rounded-[2.5rem] shadow-lg border border-gray-100 dark:border-zinc-800 flex items-center gap-6">
-                                <div className="p-4 bg-indigo-100 dark:bg-indigo-900/30 rounded-2xl text-indigo-600 dark:text-indigo-400">
-                                    <Users className="w-8 h-8" />
-                                </div>
+                            <Link href={'/my-tutor'}>
+                                <div className="bg-white dark:bg-zinc-900 p-8 rounded-[2.5rem] shadow-lg border border-gray-100 dark:border-zinc-800 flex items-center gap-6">
+                                    <div className="p-4 bg-indigo-100 dark:bg-indigo-900/30 rounded-2xl text-indigo-600 dark:text-indigo-400">
+                                        <Users className="w-8 h-8" />
+                                    </div>
 
-                                <Link href={'/my-tutor'}>
+
 
                                     <div>
                                         <p className="text-gray-500 dark:text-zinc-400 font-medium">My Tutors</p>
@@ -118,12 +120,51 @@ const ProfileCard = ({ myBookings , myAddTutors  }) => {
                                             {myAddTutors?.length || 0}
                                         </h3>
                                     </div>
-                                </Link>
 
-                            </div>
+
+                                </div>
+                            </Link>
+
+                            {/* Add New Tutor Button Card */}
+                            <Link href="/add-tutor" className="group">
+                                <div className="flex items-center justify-between p-6 bg-white dark:bg-zinc-900 border border-dashed border-blue-300 dark:border-zinc-700 rounded-3xl hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900/10 transition-all duration-300">
+                                    <div className="flex items-center gap-4">
+                                        <div className="p-3 bg-blue-600 rounded-2xl text-white group-hover:scale-110 transition-transform">
+                                            <Users className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <p className="font-bold text-gray-800 dark:text-white">Add New Tutor</p>
+                                            <p className="text-xs text-gray-500">Create a new tutoring post</p>
+                                        </div>
+                                    </div>
+                                    <div className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                        <span className="text-xl">+</span>
+                                    </div>
+                                </div>
+                            </Link>
+
+                            {/* View All Bookings Button Card */}
+                            <Link href="/my-booking-sessions" className="group">
+                                <div className="flex items-center justify-between p-6 bg-white dark:bg-zinc-900 border border-dashed border-indigo-300 dark:border-zinc-700 rounded-3xl hover:border-indigo-500 hover:bg-indigo-50 dark:hover:bg-indigo-900/10 transition-all duration-300">
+                                    <div className="flex items-center gap-4">
+                                        <div className="p-3 bg-indigo-600 rounded-2xl text-white group-hover:scale-110 transition-transform">
+                                            <BookOpen className="w-6 h-6" />
+                                        </div>
+                                        <div>
+                                            <p className="font-bold text-gray-800 dark:text-white">View Bookings</p>
+                                            <p className="text-xs text-gray-500">Check your scheduled sessions</p>
+                                        </div>
+                                    </div>
+                                    <div className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 dark:bg-zinc-800 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                                        <CircleArrowLeft className="w-4 h-4 rotate-180" />
+                                    </div>
+                                </div>
+                            </Link>
+
+
+
                         </motion.div>
-
-                        {/* Welcome/Info Section */}
+  {/* Welcome/Info Section */}
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
@@ -136,6 +177,7 @@ const ProfileCard = ({ myBookings , myAddTutors  }) => {
                             </div>
                             <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full -mr-16 -mt-16 blur-3xl"></div>
                         </motion.div>
+
                     </div>
 
                 </div>

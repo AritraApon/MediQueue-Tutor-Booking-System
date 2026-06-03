@@ -42,7 +42,6 @@ The platform provides secure authentication, tutor management, booking systems, 
 - Booking History Management
 
 ### 👤 User Features
-- Student & Tutor Role-Based Dashboard
 - Update User Profile
 - Manage Personal Information
 - Personalized User Experience
@@ -54,7 +53,7 @@ The platform provides secure authentication, tutor management, booking systems, 
 - Read Dynamic Data from Database
 
 ### 🖼️ Media Upload
-- Image Upload Support using **Cloudinary / ImgBB**
+- Image Upload via Any Direct Image URL
 
 ### 📱 Responsive Experience
 - Fully Responsive Design
@@ -243,7 +242,6 @@ BETTER_AUTH_URL=your_auth_url
 ✅ Protected Routes
 ✅ Authentication System
 ✅ Session Management
-✅ Role-Based Authorization
 ✅ Secure API Communication
 
 ---
@@ -260,7 +258,7 @@ This project is fully responsive and optimized for:
 ---
 
 # 🎯 Future Improvements
-
+* Role-Based Authorization
 * Real-time Tutor Availability
 * Online Video Session Integration
 * Payment Gateway Integration
@@ -289,4 +287,4 @@ If you like this project, don't forget to **star the repositories** ⭐
 ### 🚀 Built with passion using Next.js, Express.js, MongoDB & Better Auth
 
 </div>
-```
+
